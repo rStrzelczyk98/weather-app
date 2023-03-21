@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+:root {
+  --theme-1-header-bg: #232c43;
+  --theme-1-main-bg: #182034;
+  --theme-1-card-bg: #3a4764;
+  --theme-1-logo: #93261a;
+  --theme-1-num-text: #444b5a;
+
+  --theme-2-header-bg: #d1cccc;
+  --theme-2-main-bg: #ededed;
+  --theme-2-logo: #377f86;
+  --theme-2-card-bg: #e5e4e1;
+  --theme-2-main-text: #a69d91;
+  --theme-2-secondary-text: #35352c;
+
+  --good: #007206;
+  --moderate: #c26b07;
+  --unhealthy: #5f0202;
+  --very-unhealthy: #3c0155;
+  --hazardous: #1a0025;
+
+  --error: #c50000ce;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+.main-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: 1rem;
+  padding: 1rem;
+  margin: 0;
+}
+h1 {
+  font-weight: 500;
+  grid-column: 1/-1;
+}
+h1 > span {
+  font-size: 0.75rem;
+  display: block;
+}
+h1 > span a:is(:link, :visited) {
+  text-decoration: none;
+}
+h1 > span a:is(:hover, :active) {
+  text-decoration: underline;
+}
+input {
+  outline: transparent;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+input::placeholder {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn {
+  outline: transparent;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.btn:is(:hover, :focus) {
+  cursor: pointer;
+}
+.content {
+  overflow-y: auto;
+  gap: 1rem;
+  display: grid;
+  align-items: start;
+  grid-template-rows: min-content;
+  padding: 1rem;
+}
+
+.card,
+.forecast {
+  flex-grow: 1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.set {
+  display: grid;
+  gap: 1rem;
+}
+.set :nth-child(even),
+.set :nth-child(odd) {
+  flex-grow: 1;
+}
+
+/* today weather */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.card-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.img {
+  width: min-content;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+h3 {
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+h3 > span {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: capitalize;
+  opacity: 0.5;
+}
+.data {
+  margin-left: 0.5rem;
+}
+.good {
+  font-weight: 700;
+  color: var(--good);
+}
+.moderate {
+  font-weight: 700;
+  color: var(--moderate);
+}
+.unhealthy {
+  font-weight: 700;
+  color: var(--unhealthy);
+}
+.very-unhealthy {
+  font-weight: 700;
+  color: var(--very-unhealthy);
+}
+.hazardous {
+  font-weight: 700;
+  color: var(--hazardous);
+}
+
+/* forecast */
+.forecast {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forecast img {
+  max-width: 4rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+}
+@media screen and (min-width: 650px) {
+  ::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  .set {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card {
+    grid-row: 1/4;
+  }
+  .set :nth-last-child(2),
+  .set :last-child {
+    grid-column: 1/-1;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .set {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .set :nth-last-child(2) {
+    grid-column: auto;
+  }
+  .set :last-child {
+    grid-column: 2/-1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--theme-1-main-bg);
+  }
+  .main-header {
+    background-color: var(--theme-1-header-bg);
+  }
+  h1 {
+    color: var(--theme-1-logo);
+  }
+  h1 > span {
+    color: var(--theme-1-main-bg);
+  }
+  h1 > span a:is(:link, :visited) {
+    color: var(--theme-1-logo);
+  }
+  input {
+    background-color: var(--theme-1-card-bg);
+    color: var(--theme-1-main-bg);
+    border: 1px solid var(--theme-1-main-bg);
+  }
+  input::placeholder {
+    color: var(--theme-1-header-bg);
+  }
+  .btn {
+    color: var(--theme-1-main-bg);
+    border: 1px solid var(--theme-1-main-bg);
+    border-left-color: transparent;
+    background-color: var(--theme-1-card-bg);
+  }
+  .btn:is(:hover, :focus) {
+    background-color: var(--theme-1-main-bg);
+    color: var(--theme-1-card-bg);
+  }
+  .card,
+  .forecast {
+    color: var(--theme-1-main-bg);
+    background-color: var(--theme-1-card-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--theme-1-card-bg);
+  }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--theme-2-main-bg);
+  }
+  .main-header {
+    background-color: var(--theme-2-header-bg);
+  }
+  h1 {
+    color: var(--theme-2-logo);
+  }
+  h1 > span {
+    color: var(--theme-2-main-text);
+  }
+  h1 > span a:is(:link, :visited) {
+    color: var(--theme-2-logo);
+  }
+  input {
+    background-color: var(--theme-2-main-bg);
+    color: var(--theme-2-secondary-text);
+    border: 1px solid var(--theme-2-main-text);
+  }
+  input::placeholder {
+    color: var(--theme-2-main-text);
+  }
+  .btn {
+    color: var(--theme-2-main-text);
+    border: 1px solid var(--theme-2-main-text);
+    border-left-color: transparent;
+    background-color: var(--theme-2-main-bg);
+  }
+  .btn:is(:hover, :focus) {
+    background-color: var(--theme-2-main-text);
+    color: var(--theme-2-main-bg);
+  }
+  .card,
+  .forecast {
+    color: var(--theme-2-secondary-text);
+    background-color: var(--theme-2-card-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--theme-2-main-text);
+  }
+}
+#error {
+  color: var(--error);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-indent: 0.5rem;
+  margin-top: -0.75rem;
+}
